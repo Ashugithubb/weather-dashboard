@@ -13,13 +13,11 @@ function App() {
     JSON.parse(localStorage.getItem("searchHistory")) || []
   );
   const [currentCity, setCurrentCity] = useState(""); // Store last searched city
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
-  ); // Theme state
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 
-  // Function to Fetch Weather Data
+  // Fetch Weather Data
   const fetchWeather = async (city) => {
     if (!city.trim()) {
       setError("Please enter a city name");
@@ -39,11 +37,11 @@ function App() {
           response.status === 404 ? "City not found" : "Error fetching data";
         throw new Error(errorMessage);
       }
-      
-      
 
       const data = await response.json();
       setWeather(data);
+      setCurrentCity(city); // ✅ Store the last searched city
+      updateHistory(city); // ✅ Update search history
     } catch (err) {
       setError(err.message || "City not Found. Try again.");
     } finally {
@@ -51,7 +49,7 @@ function App() {
     }
   };
 
-  // Function to Update Search History (Keep Last 5)
+  // Update Search History
   const updateHistory = (city) => {
     setHistory((prev) => {
       const updatedHistory = [city, ...prev.filter((c) => c !== city)].slice(
@@ -63,14 +61,14 @@ function App() {
     });
   };
 
-  // Function to Handle Refresh
+  // Refresh Weather Data
   const handleRefresh = () => {
     if (currentCity) {
       fetchWeather(currentCity);
     }
   };
 
-  // Function to Toggle Dark/Light Theme
+  // Toggle Dark/Light Theme
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -84,13 +82,13 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1>Weather Dashboard</h1>
-      <SearchBar onSearch={fetchWeather} />
-
-      {/* Theme Toggle Button */}
+      {/* Theme Toggle Button (Top-Right) */}
       <button className="theme-toggle" onClick={toggleTheme}>
         {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
       </button>
+
+      <h1>Weather Dashboard</h1>
+      <SearchBar onSearch={fetchWeather} />
 
       {/* Refresh Button */}
       <button 
@@ -105,7 +103,7 @@ function App() {
       {error && <Error message={error} />}
       {weather && <WeatherCard weather={weather} />}
 
-      {/* Recent Search History */}
+      {/* Search History */}
       <div className="history">
         <h2>Recent Searches</h2>
         <ul>
