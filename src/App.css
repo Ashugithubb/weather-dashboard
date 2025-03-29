@@ -1,0 +1,182 @@
+/* ===== Default Light Mode ===== */
+:root {
+  --bg-color: linear-gradient(to right, #2193b0, #6dd5ed);
+  --text-color: #000000;
+  --card-bg: rgba(255, 255, 255, 0.2);
+  --btn-bg: #ff8c00;
+  --btn-hover: #e07b00;
+  --list-bg: #1c9fa8;
+  --list-hover: #ddd;
+}
+
+/* ===== Dark Mode ===== */
+[data-theme="dark"] {
+  --bg-color: linear-gradient(to right, #121212, #1e1e1e);
+  --text-color: #ffffff;
+  --card-bg: rgba(50, 50, 50, 0.8);
+  --btn-bg: #444;
+  --btn-hover: #555;
+  --list-bg: #333;
+  --list-hover: #444;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== App Container ===== */
+.app-container {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* ===== Headers ===== */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* ===== Search & Button Styles ===== */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adds space between input and button */
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+  font-size: 1rem;
+  color: var(--text-color);
+  background: var(--card-bg);
+  border: 1px solid var(--text-color);
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  background: var(--btn-bg);
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background: var(--btn-hover);
+}
+
+/* ===== Theme Toggle Button ===== */
+/* ===== Theme Toggle Button - Positioned at Top-Right ===== */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--btn-bg);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+  background: var(--btn-hover);
+}
+
+
+/* ===== Search History ===== */
+.history {
+  margin-top: 20px;
+}
+
+.history h2 {
+  font-size: 1.5rem;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history li {
+  cursor: pointer;
+  padding: 8px;
+  background: var(--list-bg);
+  margin: 5px 0;
+  border-radius: 5px;
+  text-align: center;
+  transition: background 0.3s ease-in-out;
+}
+
+.history li:hover {
+  background: var(--list-hover);
+}
+
+/* ===== Loader Animation ===== */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid #ffea00;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+/* refresh button */
+.refresh-btn {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: var(--btn-bg);
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.refresh-btn:hover {
+  background: var(--btn-hover);
+}
+
+.refresh-btn:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+

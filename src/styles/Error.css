@@ -1,0 +1,19 @@
+/* src/styles/Error.css */
+.error-container {
+    background: rgba(255, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+    margin: 10px auto;
+    border: 1px solid red;
+  }
+  
+  .error-container p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+  }
+  
