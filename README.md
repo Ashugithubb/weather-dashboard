@@ -2,6 +2,9 @@
 
 A simple weather dashboard built with React and Vite, which allows users to search for the weather of a city, view recent search history, and toggle between light and dark themes.
 
+<img width="1768" height="927" alt="DashBoardImg" src="https://github.com/user-attachments/assets/da301261-5ed0-4b81-be70-748aa4eb3535" />
+
+
 ## Features
 - Search for weather data by city name
 - View current temperature, humidity, and weather conditions
